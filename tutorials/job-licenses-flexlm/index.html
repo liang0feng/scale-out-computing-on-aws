@@ -1851,6 +1851,12 @@ Your Scheduler Public IP is listed on CloudFormation, to retrieve your NAT Gatew
 <img alt="" src="../../imgs/flexlm-2.png" /></p>
 <h2 id="upload-your-lmutil">Upload your lmutil<a class="headerlink" href="#upload-your-lmutil" title="Permanent link">&para;</a></h2>
 <p>lmutil binary is not included with Scale-Out Computing on AWS. You are required to upload it manually and update <code>/apps/soca/$SOCA_CONFIGURATION/cluster_manager/license_check.py</code> with the location of your file.</p>
+<div class="highlight"><pre><span></span><code><span class="n">arg</span> <span class="o">=</span> <span class="n">parser</span><span class="o">.</span><span class="n">parse_args</span><span class="p">()</span>
+<span class="hll"><span class="n">lmstat_path</span> <span class="o">=</span> <span class="s2">&quot;PATH_TO_LMUTIL&quot;</span>
+</span><span class="k">if</span> <span class="n">lmstat_path</span> <span class="o">==</span> <span class="s2">&quot;PATH_TO_LMUTIL&quot;</span><span class="p">:</span>
+    <span class="nb">print</span><span class="p">(</span><span class="s1">&#39;Please specify a link to your lmutil binary (edit line 19 of this file&#39;</span><span class="p">)</span>
+    <span class="n">sys</span><span class="o">.</span><span class="n">exit</span><span class="p">(</span><span class="mi">1</span><span class="p">)</span>
+</code></pre></div>
 <div class="admonition note">
 <p class="admonition-title">Note</p>
 <p>You do not need to install FlexLM server manager. Only <code>lmutil</code> binary is required.</p>
