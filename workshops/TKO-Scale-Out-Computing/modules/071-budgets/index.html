@@ -1852,10 +1852,10 @@
 </ol>
 </li>
 <li>
-<p>Log back into the scheduler instance via SSH and edit the <code>/apps/soca/cluster_hooks/queuejob/check_project_budget.py</code> script and paste the AWS account ID as the value for the <code>aws_account_id</code> variable.  Save the file when done.</p>
+<p>Log back into the scheduler instance via SSH and edit the <code>/apps/soca/$SOCA_CONFIGURATION/cluster_hooks/queuejob/check_project_budget.py</code> script and paste the AWS account ID as the value for the <code>aws_account_id</code> variable. Save the file when done.</p>
 <div class="highlight"><pre><span></span><code><span class="c1"># User Variables</span>
 <span class="hll"><span class="nv">aws_account_id</span> <span class="o">=</span> <span class="s1">&#39;&lt;ENTER_YOUR_AWS_ACCOUNT_ID&gt;&#39;</span>
-</span><span class="nv">budget_config_file</span> <span class="o">=</span> <span class="s1">&#39;/apps/soca/cluster_manager/settings/project_cost_manager.txt&#39;</span>
+</span><span class="nv">budget_config_file</span> <span class="o">=</span> <span class="s1">&#39;/apps/soca/%SOCA_CONFIGURATION/cluster_manager/settings/project_cost_manager.txt&#39;</span>
 </code></pre></div>
 </li>
 <li>
@@ -1863,7 +1863,7 @@
 <div class="highlight"><pre><span></span><code>sudo -i
 <span class="nb">source</span> /etc/environment
 qmgr -c <span class="s2">&quot;create hook check_project_budget event=queuejob&quot;</span>
-qmgr -c <span class="s2">&quot;import hook check_project_budget application/x-python default /apps/soca/cluster_hooks/queuejob/check_project_budget.py&quot;</span>
+qmgr -c <span class="s2">&quot;import hook check_project_budget application/x-python default /apps/soca/</span><span class="nv">$SOCA_CONFIGURATION</span><span class="s2">/cluster_hooks/queuejob/check_project_budget.py&quot;</span>
 </code></pre></div>
 </li>
 </ol>
@@ -1871,7 +1871,7 @@ qmgr -c <span class="s2">&quot;import hook check_project_budget application/x-py
 <h3 id="submit-a-job-without-budget-assignment">Submit a job without budget assignment<a class="headerlink" href="#submit-a-job-without-budget-assignment" title="Permanent link">&para;</a></h3>
 <ol>
 <li>
-<p>Switch to the <code>admin</code> cluster user.</p>
+<p>Switch to the LDAP admin cluster user created in Lab 2. For example, if the username is <code>admin</code>, then the command would be: </p>
 <p><code>sudo su - admin</code></p>
 </li>
 <li>
@@ -1885,14 +1885,14 @@ qmgr -c <span class="s2">&quot;import hook check_project_budget application/x-py
 <p>OK, let's add a project tag to comply with the policy.</p>
 <p><code>qsub -P "Project 1" -- /bin/echo Hello</code></p>
 <p>This job will also be rejected:</p>
-<div class="highlight"><pre><span></span><code>qsub: User morrmt is not assigned to any project. See /apps/soca/cluster_manager/settings/project_cost_manager.txt
+<div class="highlight"><pre><span></span><code>qsub: User admin is not assigned to any project. See /apps/soca/$SOCA_CONFIGURATION/cluster_manager/settings/project_cost_manager.txt
 </code></pre></div>
-<p>Next, we'll associated the user with "Project 1" by adding the username to the <code>project_cost_manager.txt</code> mapping file.</p>
+<p>Next, we'll associate the user with "Project 1" by adding the username to the <code>project_cost_manager.txt</code> mapping file.</p>
 </li>
 <li>
-<p>As sudo, open the <code>/apps/soca/cluster_manager/settings/project_cost_manager.txt</code> file and add "Project 1" budget and the "admin" user.</p>
+<p>As sudo, open the <code>/apps/soca/$SOCA_CONFIGURATION/cluster_manager/settings/project_cost_manager.txt</code> file and add "Project 1" budget and the "admin" user.</p>
 <div class="highlight"><pre><span></span><code># This file is used to prevent job submission when budget allocated to a project exceed your threshold
-# This file is not used by default and must be configured manually using /apps/soca/cluster_hooks/queuejob/check_project_budget.py
+# This file is not used by default and must be configured manually using /apps/soca/$SOCA_CONFIGURATION/cluster_hooks/queuejob/check_project_budget.py
 # Help &amp; Documentation: https://soca.dev/tutorials/set-up-budget-project/
 #
 #

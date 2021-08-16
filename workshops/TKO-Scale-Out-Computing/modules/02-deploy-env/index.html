@@ -1789,7 +1789,7 @@
 <p>On the <strong>Create stack</strong> page, you should see the template URL in the <strong>Amazon S3 URL</strong> text box and choose <strong>Next</strong>.</p>
 </li>
 <li>
-<p>On the <strong>Specify stack</strong> details page, assign the name <strong>"soca"</strong> to the stack.</p>
+<p>On the <strong>Specify stack</strong> details page, assign the name <strong>"tko"</strong> to the stack.</p>
 <div class="admonition warning">
 <p class="admonition-title">Warning</p>
 <p>The stack name must be less than 20 characters and must be lower-case only.</p>
@@ -1848,7 +1848,7 @@
 </tr>
 <tr>
 <td>VPC Cluster CIDR</td>
-<td>110.0.0.0/16</td>
+<td>10.0.0.0/16</td>
 <td>Choose the CIDR (/16) block for the VPC. Do not change this parameter.</td>
 </tr>
 <tr>
@@ -1869,7 +1869,7 @@
 <tr>
 <td>User Name</td>
 <td><Requires input></td>
-<td><strong>REQUIRED</strong> Set a username for the default cluster user.</td>
+<td><strong>REQUIRED</strong> Set a username for the default cluster user. This will be the administrator user for LDAP which would allow you to add other users to the cluster.</td>
 </tr>
 <tr>
 <td>Password</td>

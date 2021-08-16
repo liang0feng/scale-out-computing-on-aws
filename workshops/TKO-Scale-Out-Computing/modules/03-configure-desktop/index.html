@@ -1755,8 +1755,8 @@
 </ol>
 </li>
 <li>
-<p>Once logged in, as sudo, open the file <code>/apps/soca/cluster_manager/settings/queue_mapping.yml</code> using your favorite text editor.</p>
-<p>Example: <code>sudo vi /apps/soca/cluster_manager/settings/queue_mapping.yml</code></p>
+<p>Once logged in, type <code>sudo su</code> to become root on the scheduler instance, then open the file <code>/apps/soca/$SOCA_CONFIGURATION/cluster_manager/settings/queue_mapping.yml</code> using your favorite text editor.</p>
+<p>Example: <code>vi /apps/soca/$SOCA_CONFIGURATION/cluster_manager/settings/queue_mapping.yml</code></p>
 </li>
 <li>
 <p>Change the the highlighted values in the file to match the example below.</p>
@@ -1767,7 +1767,7 @@
 <div class="highlight"><pre><span></span><code><span class="nt">queue_type</span><span class="p">:</span>
 <span class="nt">compute</span><span class="p">:</span>
     <span class="nt">queues</span><span class="p">:</span> <span class="p p-Indicator">[</span><span class="s">&quot;high&quot;</span><span class="p p-Indicator">,</span> <span class="s">&quot;normal&quot;</span><span class="p p-Indicator">,</span> <span class="s">&quot;low&quot;</span><span class="p p-Indicator">]</span>
-<span class="hll">    <span class="nt">instance_ami</span><span class="p">:</span> <span class="s">&quot;ami-05d709335d603daac&quot;</span>
+<span class="hll">    <span class="nt">instance_ami</span><span class="p">:</span> <span class="s">&quot;ami-03f32123533983fdb&quot;</span>
 </span>    <span class="nt">instance_type</span><span class="p">:</span> <span class="s">&quot;c5.large&quot;</span>
     <span class="nt">ht_support</span><span class="p">:</span> <span class="s">&quot;false&quot;</span>
 <span class="hll">    <span class="nt">root_size</span><span class="p">:</span> <span class="s">&quot;100&quot;</span>
@@ -1776,17 +1776,10 @@
     <span class="c1">#scratch_iops: &quot;3600&quot;</span>
     <span class="c1">#efa_support: &quot;false&quot;</span>
     <span class="c1"># .. Refer to the doc for more supported parameters</span>
-<span class="nt">desktop</span><span class="p">:</span>
-    <span class="nt">queues</span><span class="p">:</span> <span class="p p-Indicator">[</span><span class="s">&quot;desktop&quot;</span><span class="p p-Indicator">]</span>
-<span class="hll">    <span class="nt">instance_ami</span><span class="p">:</span> <span class="s">&quot;ami-05d709335d603daac&quot;</span>
-</span>    <span class="nt">instance_type</span><span class="p">:</span> <span class="s">&quot;c5.2xlarge&quot;</span>
-    <span class="nt">ht_support</span><span class="p">:</span> <span class="s">&quot;false&quot;</span>
-<span class="hll">    <span class="nt">root_size</span><span class="p">:</span> <span class="s">&quot;100&quot;</span>
-</span><span class="hll">    <span class="nt">base_os</span><span class="p">:</span> <span class="s">&quot;centos7&quot;</span>
-</span></code></pre></div>
+</code></pre></div>
 </li>
 <li>
-<p>Save the changes to the file.</p>
+<p>Save the changes to the file. The steps above configured the AMI ID to be used when we submit jobs to the compute queues specified above.</p>
 </li>
 </ol>
 <p>Keep this SSH session open; you will come back to it later.  Click the <strong>Next</strong> to move on to the next module.</p>
