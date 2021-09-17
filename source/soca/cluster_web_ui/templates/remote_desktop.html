@@ -512,7 +512,7 @@
                                       <div class="form-group row">
                                           <label for="disk_size" data-toggle="tooltip" data-placement="top" title="Select the size (in GB) of your main SSD disk used for / partition." class="col-sm-4 col-form-label">Storage Size</label>
                                           <div class="col-sm-8">
-                                            <input id="disk_size" value="10" min="10" class="form-control" type="number" name="disk_size">
+                                            <input id="disk_size" value="30" min="30" class="form-control" type="number" name="disk_size">
                                           </div>
                                       </div>
                                       <div class="form-group row">
@@ -531,8 +531,8 @@
                                           <div class="col-sm-8">
                                               <select class="form-control" name='instance_type' id="instance_type">
                                                   <option value="" disabled="disabled">-- Quick Launch 2D --</option>
-                                                  <option selected="true" value="m5.large">2D - Small (2 vCPUs - 8 GB ram)</option>
-                                                  <option value="m5.2xlarge">2D - Medium (8 vCPUs - 32 GB ram)</option>
+                                                  <option selected="true" value="t3.large">2D - Small (2 vCPUs - 8 GB ram)</option>
+                                                  {#<option value="m5.2xlarge">2D - Medium (8 vCPUs - 32 GB ram)</option>
                                                   <option value="m5.4xlarge">2D - Large (16 vCPUs - 64 GB ram)</option>
                                                   <option value="m5.12xlarge">2D - Extra Large (48 vCPUs - 192 GB ram)</option>
                                                   <option value="m5.24xlarge">2D - XXL Large (96 vCPUs - 384 GB ram)</option>
@@ -545,7 +545,7 @@
                                                   <option value="" disabled="disabled">-- Specific type --</option>
                                                   {%  for instance in all_instances %}
                                                       <option value="{{ instance }}">{{ instance }}</option>
-                                                  {% endfor %}
+                                                  {% endfor %}#}
                                               </select>
                                           </div>
                                       </div>
